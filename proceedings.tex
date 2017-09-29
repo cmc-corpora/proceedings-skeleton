@@ -3,146 +3,156 @@
 Media Corpora for the Humanities (cmccorpora17)%
 %\thanks{Thank You!}%
 }
-\newcommand{\authora}{Ciara R.~Wigham}
-\newcommand{\authorb}{Egon W.~Stemle}
+\newcommand{\authora}{Egon W.~Stemle}
+\newcommand{\authorb}{Ciara R.~Wigham}
 \newcommand{\theauthors}{\authora, \authorb}
-\newcommand{\shortauthora}{C.R.Wigham}
-\newcommand{\shortauthorb}{E.W.Stemle}
+\newcommand{\shortauthora}{E.W.Stemle}
+\newcommand{\shortauthorb}{C.R.Wigham}
 \newcommand{\shorttitle}{cmccorpora17}
 
 % Institutes for affiliations are also joined by \and,
 \newcommand{\institutea}{Universit\'e Clermont Auvergne, France}
 \newcommand{\instituteb}{Eurac Research, Italy}
+%%
+%%%
 
-%% ----------------------------------------------------------------------
-%% Margins, columns, etc
-%
-% init geometry with these values (from lrec2016.sty) to have them when fancyhdr loads
+%%%
+%%
+%%
+\documentclass[usegeometry]{scrbook}
+\KOMAoptions{
+    fontsize=10pt,
+    % twoside=semi,
+    twoside=false,
+    paper=a4,
+}
+
+\usepackage{hyperxmp}
+\usepackage[
+    type={CC},
+    modifier={by-sa},
+    version={4.0},
+]{doclicense}
+
+%%%
+%% Margins, columns, etc values (from lrec2016.sty) for use with geometry
+%%
 %\setlength\topmargin{-0.1cm}
 %\setlength\oddsidemargin{-0.7cm}
 %\setlength\evensidemargin{-0.7cm}
 %\setlength\textheight{25.4cm}
 %\setlength\textwidth{17.2cm}
-\PassOptionsToPackage{%
-    twoside=false, 
-    top=1cm, 
-    bottom=1cm, 
-    left=1.9cm, 
-    right=1.9cm, 
-    includeheadfoot}
-{geometry}
+\usepackage{geometry}
 
-% easychair.tex,v 3.5 2017/03/15
-\documentclass[a4paper, onesided]{easychair}
-%\documentclass[EPiC]{easychair}
-%\documentclass[EPiCempty]{easychair}
-%\documentclass[debug]{easychair}
-%\documentclass[verbose]{easychair}
-%\documentclass[notimes]{easychair}
-%\documentclass[withtimes]{easychair}
-%\documentclass[a4paper]{easychair}
-%\documentclass[letterpaper]{easychair}
-
-\usepackage{doc}
-
-% allow for inclusion of pdf documents
+% for inclusion of pdf documents
 \usepackage{pdfpages}
 
-% use this if you have a long article and want to create an index
+%%%
+%% for author and keyword index
+%%
 \usepackage{imakeidx}
 \indexsetup{}
 \makeindex[name=keywords,title=Keyword Index,columns=2]
 \makeindex[name=authors,title=Author Index,columns=2]
-% allow for splitting author-/keyword lists for the index
+% for splitting author and keyword lists in the index
 \usepackage{xparse}
+%%
+%%%
 
-% for Committees
+% for Committees page
 \usepackage{longtable}
 
-% In order to save space or manage large tables or figures in a
-% landcape-like text, you can use the rotating and pdflscape
-% packages. Uncomment the desired from the below.
-%
-% \usepackage{rotating}
-% \usepackage{pdflscape}
-
-%% Front Matter
+%%%
+%% FRONT MATTER
 %%
 % Regular title as in the article class.
 %
 \title{\thetitle}
 
-% Institutes for affiliations are also joined by \and,
-\institute{%
-    \institutea
-\and%
-    \instituteb
-}
-
-% \authorrunning{} has to be set for the shorter version of the authors' names;
-% otherwise a warning will be rendered in the running heads. When processed by
-% EasyChair, this command is mandatory: a document without \authorrunning
-% will be rejected by EasyChair
-\authorrunning{}
-
-% \titlerunning{} has to be set to either the main title or its shorter
-% version for the running heads. When processed by
-% EasyChair, this command is mandatory: a document without \titlerunning
-% will be rejected by EasyChair
-\titlerunning{\shorttitle}
-
-\usepackage{titletoc}
-\usepackage{xifthen}
-\titlecontents{section}[0pt]{\addvspace{5pt}\filright}{}{}{\dotfill\contentspage}[]
-\titlecontents{subsection}[10pt]{\addvspace{1pt}\itshape\filright}{}{}{}[]
-\titlecontents{subsubsection}[2pt]{\addvspace{10pt}\bfseries\titlerule[0.5pt]\filright}{}{}{}[]
-%\newcommand{\tocSection}[1]{\contentsline{subsubsection}{#1\\*\titlerule[0.5pt]\vspace{-9pt plus 2pt minus 2pt}}{}{}\nopagebreak[4]}
-%\newcommand{\tocTitle}[2]{\contentsline{section}{#1}{#2}{}\nopagebreak[4]}
-%\newcommand{\tocAuthors}[1]{\contentsline{subsection}{#1}{}{}}
-
-
+%%%
+%% BEGIN: Author and Keyword Index Splitter
+%%
 \NewDocumentCommand \authorsindexsplitter
 { > { \SplitList { , } } m }
 { \ProcessList {#1} { \authorsindexsplitterand } }
 \NewDocumentCommand \authorsindexsplitterand
 { > { \SplitList { and } } m }
 { \ProcessList {#1} { \authorsindexindexer } }
-\NewDocumentCommand{\authorsindexindexer}{m}{\index[authors]{#1}} 
+\NewDocumentCommand{\authorsindexindexer}{m}{\index[authors]{#1}}
 \NewDocumentCommand \keywordsindexsplitter
 { > { \SplitList { , } } m }
 { \ProcessList {#1} { \keywordsindexindexer } }
-\NewDocumentCommand{\keywordsindexindexer}{m}{\index[keywords]{#1}} 
-
+\NewDocumentCommand{\keywordsindexindexer}{m}{\index[keywords]{#1}}
+%
 \DeclareRobustCommand{\insertpdf}[7][]{
     \phantomsection
 
     \addcontentsline{toc}{section}{#4}
     \ifthenelse{\equal{#5}{}}{%
         \addcontentsline{pdf}{section}{#4}%
-        \fancyhead[R]{#4}
+        \ohead{#4}
     }{%
         \addcontentsline{pdf}{section}{#5}%
-        \fancyhead[R]{#5}
+        \ohead{#5}
     }
 
     \addcontentsline{toc}{subsection}{#3}
     \ifthenelse{\equal{#6}{}}{%
-        \fancyhead[L]{#3}
+        \ihead{#3}
     }{%
-        \fancyhead[L]{#6}
+        \ihead{#6}
     }
 
     \authorsindexsplitter{#3}
     \keywordsindexsplitter{#7}
 
     \ifthenelse{\equal{#1}{1}}{%
-        \includepdf[pagecommand={\thispagestyle{plain}}, pages=1]{#2}
+        \includepdf[pagecommand={%
+            \thispagestyle{scrplain}
+            }, pages=1]{#2}
     }{%
-        \includepdf[pagecommand={\thispagestyle{plain}}, pages=1]{#2}
-        \includepdf[pagecommand={\thispagestyle{main}}, pages=2-]{#2}
+        \includepdf[pagecommand={%
+            \thispagestyle{scrplain}
+            }, pages=1]{#2}
+        \includepdf[pagecommand={%
+            \pagestyle{scrheadings}
+            }, pages=2-]{#2}
     }
 }
+%%
+%% END
+%%%
 
+%%%
+%% toc and minitocs
+%%
+\usepackage{titletoc}
+\titlecontents{section}[0pt]{\addvspace{5pt}\filright}{}{}{\dotfill\contentspage}[]
+\titlecontents{subsection}[10pt]{\addvspace{1pt}\itshape\filright}{}{}{}[]
+
+\usepackage[tocfullflat]{tocstyle}
+\usetocstyle{KOMAlike}
+% no page number for authors
+\settocfeature[toc][2]{pagenumberbox}{\csname @gobble\endcsname}
+% no dots for authors
+\settocfeature[toc][2]{dothook}{\csname @gobble\endcsname}
+% indent authors but without hanging indent
+\settocfeature[toc][2]{entryhook}{\itshape\hskip \leftskip \setlength{\leftskip}{10pt}}
+% more vspace between author and paper entries
+\settocfeature[toc][1]{entryvskip}{2pt}
+% no hanging indent
+\settocfeature[toc][1]{entryhook}{\bfseries\hskip\leftskip\setlength{\leftskip}{0pt}}
+
+\usepackage[automark,autooneside=false,headsepline,footsepline,plainfootsepline]{scrlayer-scrpage}
+
+\clearscrheadfoot %% <-----
+%\lehead{AUTHOR \hfill SHORTTITLE}% left even head <================
+%\refoot[\shorttitle \hfill \pagemark]{\shorttitle \hfill \pagemark}
+%\rohead{AUTHOR \hfill SHORTTITLE}% left even head <================
+\lofoot[\shorttitle \hfill \pagemark]{\shorttitle \hfill \pagemark}
+
+% recommended: last
+\usepackage{hyperref}
 \hypersetup{%
     pdftitle={\thetitle},
     pdfauthor={\theauthors},
@@ -150,53 +160,77 @@ Media Corpora for the Humanities (cmccorpora17)%
     pdfkeywords={},
     pdfcreator={},
     colorlinks=true,
-    linkcolor=blue,
+    allcolors=blue,
+    linktocpage=true, % link page number in toc rather than text
     bookmarkstype=pdf,
     bookmarksopen=true,
     bookmarksopenlevel=4
 }
+% recommended: *after* hyperref
+\usepackage{minitoc}
+\renewcommand{\mtcfont}{\small\itshape}
+\renewcommand{\mtcSfont}{\small\bfseries}
+\usepackage{silence}  % silence minitoc warnings because of hyperref foo
+\WarningFilter{minitoc(hints)}{W0023}
+\WarningFilter{minitoc(hints)}{W0024}
+\WarningFilter{minitoc(hints)}{W0028}
+\WarningFilter{minitoc(hints)}{W0030}
+%%
+%%%
 
 %%%
 %%% DOCUMENT
-%%% 
+%%%
 \begin{document}
-
-\fancypagestyle{plain}{%
-\fancyhf{} % clear all header and footer fields
-\fancyfoot[L]{{\shorttitle}}
-\fancyfoot[R]{{\normalsize\thepage}}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0.4pt}}
-
-% fine lines above footer and below header
-\fancypagestyle{main}{%
-\fancyfoot[L]{{\shorttitle}}
-\fancyfoot[R]{{\normalsize\thepage}}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}}
-
+\newgeometry{
+    top=1cm,
+    bottom=1cm,
+    left=1.9cm,
+    right=1.9cm,
+    includeheadfoot}
+\dominitoc
+\pagestyle{scrheadings}
 
 %%%%%%
 %%% Front Matter
 %%%%%%
-\pagenumbering{roman}
+%\pagenumbering{roman}
+\frontmatter
 
 %%%
 %%% TITLE Page
-%%% 
+%%%
+\subject{Conference Proceedings}
 \title{\thetitle}
-% Authors are joined by \and. Their affiliations are given by \inst, which indexes
-% into the list defined using \institute
-%
-\author{\authora\inst{1} \and \authorb\inst{2}}
 
-\clearpage
+\author{Editors \\ \authora \\ \authorb}
+\date{}
+
+%\phantomsection
+%\addcontentsline{pdf}{section}{Title}
 \maketitle
+\clearpage
+
+\section*{\thetitle}
+\paragraph{Editors} \authora, \authorb
 
 \bigskip
+\noindent
+Bolzano, 2017
 
-\phantomsection  
+\vfill
+
+\paragraph{Web site}\href{https://cmc-corpora2017.eurac.edu}{https://cmc-corpora2017.eurac.edu}
+
+\doclicenseThis
+
+\thispagestyle{empty}
+\clearpage
+
+\chapter*{Preface}
+\phantomsection
 \addcontentsline{pdf}{section}{Preface}
+\addcontentsline{toc}{section}{Preface}
 This volume presents the proceedings of the 5{$^{th}$} edition of the annual conference series on CMC and Social Media Corpora for the Humanities (cmc-corpora2017). This conference series is dedicated to the collection, annotation, processing, and exploitation of corpora of computer-mediated communication (CMC) and social media for research in the humanities. The annual event brings together language-centered research on CMC and social media in linguistics, philologies, communication sciences, media and social sciences with research questions from the fields of corpus and computational linguistics, language technology, text technology, and machine learning.
 
 The 5th Conference on CMC and Social Media Corpora for the Humanities was held at Eurac Research on October, 4th and 5th, in Bolzano, Italy. This volume contains extended abstracts of the invited talks, papers, and extended abstracts of posters presented at the event. The conference attracted 26 valid submissions. Each submission was reviewed by at least two members of the scientific committee. This committee decided to accept 16 papers and 8 posters of which 14 papers and 4 posters were presented at the conference. The programme also includes three invited talks: two keynote talks by \textit{Aivars Glaznieks} (Eurac Research, Italy) and \textit{A. Seza Do\u{g}ru\"oz} (Independent researcher) and an invited talk on the Common Language Resources and Technology Infrastructure (CLARIN) given by \textit{Darja Fi\v{s}er}, the CLARIN ERIC Director of User Involvement.
@@ -220,7 +254,7 @@ We look forward to welcoming colleagues at the 2018 conference to be held in Ant
     \medskip
     Chair of the Scientific Committee and chair of the Organizing Committee.
 \end{minipage}
-\thispagestyle{plain}
+\thispagestyle{scrplain}
 \clearpage
 %%%
 %%% TITLE Page - END
@@ -231,10 +265,8 @@ We look forward to welcoming colleagues at the 2018 conference to be held in Ant
 %%%%%%
 %%% TOC
 %%%
-\clearpage
-\pagestyle{plain}
 \renewcommand\contentsname{Table of Contents}
-\phantomsection  
+\phantomsection
 \addcontentsline{pdf}{section}{Table of Contents}
 \tableofcontents
 \clearpage
@@ -242,21 +274,22 @@ We look forward to welcoming colleagues at the 2018 conference to be held in Ant
 %%% TOC - end
 %%%%%%
 
-\clearpage
-\pagestyle{plain}
-\section*{Committees}
-\addcontentsline{pdf}{chapter}{Committees}%
+%\clearpage
+%\pagestyle{plain}
+\chapter*{Committees}
+\phantomsection
+\addcontentsline{pdf}{section}{Committees}%
 \addcontentsline{toc}{section}{Committees}
 
 \bigskip
-\subsection*{Scientific Committee}
+\section*{Scientific Committee}
 \begin{longtable}{p{0.35\textwidth}p{0.65\textwidth}} %
-       \hline {\bf Chair} \medskip \\
-    Ciara Wigham & Universit\'e Clermont Auvergne %
-       \bigskip \\ \hline {\bf Co-Chairs} \medskip \\
+       \textbf{Chair} \\ \hline
+    Ciara Wigham & Universit\'e Clermont Auvergne  %
+       \medskip \\ \textbf{Co-Chairs} \\ \hline
     Michael Bei{\ss}wenger & Universit\"at Duisburg-Essen\\
     Darja Fi\v{s}er & Faculty of Arts, University of Ljubljana %
-       \bigskip\\ \hline {\bf Members} \medskip \\ 
+       \medskip\\ \textbf{Members} \\ \hline
     Andrea Abel & Eurac Research\\
     Steven Coats & University of Oulu\\
     Daria Dayter & University of Basel\\
@@ -269,14 +302,14 @@ We look forward to welcoming colleagues at the 2018 conference to be held in Ant
     Maja Mili\v{c}evi\'c & University of Belgrade\\
     Mar\'ia-Teresa Ortego-Ant\'on & Departamento de Lengua Espa\~{n}ola (\'Area de Traducci\'on e Interpretaci\'on) - Universidad de Valladolid\\
     C\'eline Poudat & BCL, Universit\'e Nice-Sophia Antipolis, CNRS\\
-    H. M\"uge Satar & Newcastle University\\
+    H.~M\"uge Satar & Newcastle University\\
     Stefania Spina & Universit\`a per Stranieri di Perugia\\
     Egon W.~Stemle & Eurac Research\\
     Angelika Storrer & Universit\"at Dortmund\\
 \end{longtable}
 
 \bigskip
-\subsection*{Coordinating Committee}
+\section*{Coordinating Committee}
 \begin{longtable}{p{0.35\textwidth}p{0.65\textwidth}}
     Michael Bei{\ss}wenger & Universit\"at Duisburg-Essen\\
     Darja Fi\v{s}er & Faculty of Arts, University of Ljubljana\\
@@ -284,23 +317,30 @@ We look forward to welcoming colleagues at the 2018 conference to be held in Ant
 \end{longtable}
 
 \bigskip
-\subsection*{Organizing Committee}
+\section*{Organizing Committee}
 \begin{longtable}{p{0.35\textwidth}p{0.65\textwidth}}
-       \hline {\bf Chair} \medskip \\
+       \textbf{Chair} \\ \hline
     Egon W. Stemle & Eurac Research %
-       \bigskip\\ \hline {\bf Members} \medskip \\ 
+       \medskip \\ \textbf{Members} \\ \hline
     Irina Iokhno & Eurac Research\\
     Daniela Gasser & Eurac Research\\
 \end{longtable}
 \clearpage
+
 %%%%%%
-%% main matter
+%% MAIN MATTER
 %%%%%
-\pagestyle{main}
-\pagenumbering{arabic}
-\phantomsection  
+\mainmatter
+
+\addchap{Invited Talks}
+%\addstarredchapter{Invited Talks}
+\minitoc
+\phantomsection
 \addcontentsline{pdf}{chapter}{Invited Talks}%
-\addcontentsline{toc}{subsubsection}{Invited Talks}
+%\addcontentsline{toc}{chapter}{Invited Talks}
+\thispagestyle{empty}
+\clearpage
+
 
   \insertpdf[1]{inv-2/main.pdf}{Aivars Glaznieks}{Think Global, Write Local -- Patterns of Writing Dialect on SNS}{Patterns of Writing Dialect on SNS}{A.Glaznieks}{orthography, dialect writing, Facebook}
   %
@@ -308,12 +348,21 @@ We look forward to welcoming colleagues at the 2018 conference to be held in Ant
   %
   \insertpdf[1]{inv-1/main.pdf}{Darja Fi\v{s}er}{CLARIN Survey of CMC Resources and Tools}{}{D.Fi\v{s}er}{}
   %
-\phantomsection  
+
+
+\addchap{Papers}
+%\addstarredchapter{Papers}
+\minitoc
+\phantomsection
 \addcontentsline{pdf}{chapter}{Papers}%
-\addcontentsline{toc}{subsubsection}{Papers}
+%\addcontentsline{toc}{chapter}{Papers}
+\thispagestyle{empty}
+\clearpage
+
+
   \insertpdf{papers/paper_2.pdf}{Steven Coats}{European Language Ecology and Bilingualism with English on Twitter}{Language Ecology and Bilingualism with English}{S.Coats}{bilingualism, social media, Twitter, corpus linguistics, quantitative methods}
   %
-  \insertpdf{papers/paper_28.pdf}{Michael Bei{\ss}wenger, Ciara Wigham, Carole Etienne, Holger Grumt Suárez, Laura Herzberg, Darja Fi\v{s}er, Erhard Hinrichs, Tobias Horsmann, Natali Karlova-Bourbonus, Lothar Lemnitzer, Julien Longhi, Harald L\"ungen, Lydia-Mai Ho-Dac, Christophe Parisse, Céline Poudat, Thomas Schmidt, Egon Stemle, Angelika Storrer and Torsten Zesch}{Connecting Resources: Which Issues Have to be Solved to Integrate CMC Corpora from Heterogeneous Sources and for Different Languages?}{Connecting Resources}{M.Bei{\ss}wenger, C.Wigham and colleagues}{corpora, research infrastructures, annotation, anonymisation}
+  \insertpdf{papers/paper_28.pdf}{Michael Bei{\ss}wenger, Ciara Wigham, Carole Etienne, Holger Grumt Su\'arez, Laura Herzberg, Darja Fi\v{s}er, Erhard Hinrichs, Tobias Horsmann, Natali Karlova-Bourbonus, Lothar Lemnitzer, Julien Longhi, Harald L\"ungen, Lydia-Mai Ho-Dac, Christophe Parisse, C\'eline Poudat, Thomas Schmidt, Egon Stemle, Angelika Storrer and Torsten Zesch}{Connecting Resources: Which Issues Have to be Solved to Integrate CMC Corpora from Heterogeneous Sources and for Different Languages?}{Connecting Resources}{M.Bei{\ss}wenger, C.Wigham and colleagues}{corpora, research infrastructures, annotation, anonymisation}
   %
   \insertpdf{papers/paper_19.pdf}{Laura Herzberg and Angelika Storrer}{Investigating Interaction Signs across Genres, Modes and Languages: The Example of OKAY}{OKAY}{L.Herzberg and A.Storrer}{interaction signs, cross-lingual CMC study, Wikipedia talk pages}
   %
@@ -338,11 +387,19 @@ We look forward to welcoming colleagues at the 2018 conference to be held in Ant
   \insertpdf{papers/paper_5.pdf}{Stefania Spina}{Emoticons as multifunctional and pragmatic Resources:  a corpus-based Study on Twitter}{Emoticons as multifunctional and pragmatic Resources}{S.Spina}{emoticons, Twitter, mixed-effects models}
 
   \insertpdf{papers/paper_23.pdf}{Lieke Verheijen and Wilbert Spooren}{The Impact of WhatsApp on Dutch Youths' School Writing}{}{L.Verheijen and W.Spooren}{social media, WhatsApp, school writing, literacy}
-%\section*{Posters}
-\phantomsection  
+
+
+\addchap{Posters}
+%\addstarredchapter{Posters}
+\minitoc
+\phantomsection
 \addcontentsline{pdf}{chapter}{Posters}%
-\addtocontents{toc}{\protect\clearpage}
-\addcontentsline{toc}{subsubsection}{Posters}
+%\addtocontents{toc}{\protect\clearpage}
+%\addcontentsline{toc}{chapter}{Posters}
+\thispagestyle{empty}
+\clearpage
+
+
   \insertpdf[1]{papers/paper_14.pdf}{Michael Bei{\ss}wenger, Marcel Fladrich, Wolfgang Imo and Evelyn Ziegler}{MoCoDa 2.0: Creating a Database and Web Frontend for the Repeated Collec-tion of Mobile Communication (WhatsApp, SMS \& Co)}{MoCoDa 2.0}{M.Bei{\ss}wenger, M.Fladrich, W.Imo and E.Ziegler}{corpora, collection strategies, WhatsApp, annotation}
   %
   \insertpdf[1]{papers/paper_7.pdf}{Leo Muelle}{A corpus-driven approach to pseudonymity and the expression of emotions in Computer Mediated Communication in French and English}{Pseudonymity and expression of emotions}{L.Muelle}{IRC, pseudonymity, corpora, contextual analyses, dataset, linguistic aspects, R}
@@ -352,23 +409,26 @@ We look forward to welcoming colleagues at the 2018 conference to be held in Ant
   \insertpdf[1]{papers/paper_21.pdf}{Simone Ueberwasser}{The graphic realization of /l/-vocalization in Swiss German WhatsApp messages}{/l/-vocalization in Swiss German}{S.Ueberwasser}{Swiss German dialects, /l/-vocalization, WhatsApp: dialect use in}
 %------------------------------------------------------------------------------
 
-%\backmatter
-% Index
-\clearpage
-\thispagestyle{plain}
-%%% APPENDIX
-\phantomsection  
+%%%
+%% BACK MATTER
+%%%
+\backmatter
+\addchap{Appendix}
+\minitoc
+\phantomsection
 \addcontentsline{pdf}{chapter}{Appendix}%
-\addcontentsline{toc}{subsubsection}{Appendix}
-\fancyhead[L,R]{}
+%\addcontentsline{toc}{chapter}{Appendix}
+\thispagestyle{empty}
+\clearpage
+
 
 \printindex[authors]
-\thispagestyle{plain}
+%\thispagestyle{plain}
 \addcontentsline{pdf}{section}{Author Index}
 \addcontentsline{toc}{section}{Author Index}
 
 \printindex[keywords]
-\thispagestyle{plain}
+%\thispagestyle{plain}
 \addcontentsline{pdf}{section}{Keyword Index}
 \addcontentsline{toc}{section}{Keyword Index}
 
