@@ -16,6 +16,12 @@ Media Corpora for the Humanities (cmccorpora17)%
 % Institutes for affiliations are also joined by \and,
 \newcommand{\institutea}{Universit\'e Clermont Auvergne, France}
 \newcommand{\instituteb}{Eurac Research, Italy}
+
+\newcommand{\colophon}{%
+    This publication was compiled with Lua\LaTeX{}.  The \LaTeX{} template is based
+    on \href{http://www.komascript.de/}{KOMA script} and can be found online:
+    \href{https://github.com/cmc-corpora/}{https://github.com/cmc-corpora/}.
+}
 %%
 %%%
 
@@ -223,8 +229,10 @@ Media Corpora for the Humanities (cmccorpora17)%
 %%%
 \subject{Conference Proceedings}
 \title{\thetitle}
+\subtitle{3-4 October 2017, Eurac Research, Italy}
 
-\author{Editors \\ \authora \\ \authorb}
+\author{}
+\publishers{Editors \\ \authora \\ \authorb}
 \date{}
 
 %\phantomsection
@@ -233,30 +241,56 @@ Media Corpora for the Humanities (cmccorpora17)%
 \clearpage
 
 \section*{\thetitle}
-\paragraph{Editors} \authora, \authorb
+\paragraph{Editors:} \authora, \authorb
 
 \bigskip
 \noindent
 Bolzano, 2017
 
-\bigskip
+\smallskip
+\noindent
+First edition
 
-Support:
-Eurac Research
-\includegraphics[scale=0.5]{img/eurac_research-stacked_logo-red}
+\bigskip 
 
-cmc-corpora Conference Series
-\includegraphics[scale=0.5]{img/cmc_corpora-logo}
+\noindent
+Conference web site:
+\href{https://cmc-corpora2017.eurac.edu}{https://cmc-corpora2017.eurac.edu}
 
-CLARIN
-\includegraphics[scale=0.5]{img/Logo-eps-long-CLARIN-sub1}
+\smallskip
+\noindent
+This publication is available at:
+\href{https://cmc-corpora2017.eurac.edu/proceedings/}{https://cmc-corpora2017.eurac.edu/proceedings/}
 
 \vfill
 
-\paragraph{Web site}\href{https://cmc-corpora2017.eurac.edu}{https://cmc-corpora2017.eurac.edu}
+This publication was supported by
+
+\noindent
+\begin{minipage}{.33\textwidth}%
+    \center
+    \href{http://www.eurac.edu}{\includegraphics[width=.75\textwidth]{img/eurac_research-stacked_logo-red}}
+\end{minipage}%
+\begin{minipage}{.33\textwidth}%
+    \center
+    \href{http://cmc-corpora.org}{\includegraphics[width=.55\textwidth]{img/cmc_corpora-logo}}
+
+    \smallskip 
+    {\small \href{http://cmc-corpora.org}{cmc-corpora Conference Series}}
+\end{minipage}
+\begin{minipage}{.33\textwidth}%
+    \center
+    \href{https://www.clarin.eu}{\includegraphics[width=.70\textwidth]{img/Logo-eps-compact-CLARIN-sub}}
+\end{minipage}
+
+
+\vfill
+
+\noindent\colophon
+
+\smallskip
 
 \doclicenseThis
-
 \thispagestyle{empty}
 \clearpage
 
@@ -278,16 +312,14 @@ We look forward to welcoming colleagues at the 2018 conference to be held in Ant
 \bigskip
 
 \noindent
-\begin{minipage}[t]{.2\textwidth}
-    August 7, 2017\\
-    Bozen/Bolzano
+\begin{minipage}[t]{.18\textwidth}%
+    September 30, 2017\\
+    Bolzano/Bozen
 \end{minipage}%
 \hfill
-\begin{minipage}[t]{.75\textwidth}\flushright
-    \index[authors]{Ciara Wigham}
-    \index[authors]{Egon Stemle}
-    Ciara R.~Wigham, Universit\'e Clermont Auvergne (France)\\
-    Egon W.~Stemle, Eurac Research (Italy)\\
+\begin{minipage}[t]{.80\textwidth}\flushright%
+    Ciara R.~Wigham, Universit\'e Clermont Auvergne (France) \index[authors]{Ciara Wigham} \\%
+    Egon W.~Stemle, Eurac Research (Italy) \index[authors]{Egon Stemle} \\%
     \medskip
     Chair of the Scientific Committee and chair of the Organizing Committee.
 \end{minipage}
