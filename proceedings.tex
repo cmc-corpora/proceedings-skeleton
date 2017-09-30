@@ -9,7 +9,6 @@ Media Corpora for the Humanities (cmccorpora17)%
 \newcommand{\shortauthora}{E.W.Stemle}
 \newcommand{\shortauthorb}{C.R.Wigham}
 \newcommand{\shorttitle}{\#cmccorpora17}
-\newcommand{\footershorttitle}{\href{https://twitter.com/intent/tweet?text=reading\%20\%23cmccorpora17\%20online\%20proceedings from https://cmc-corpora2017.eurac.edu/proceedings/}{\shorttitle}}
 \newcommand{\pdfsubject}{Conference Proceedings}
 \newcommand{\pdfkeywords}{conference proceedings, CMC, social media, corpora, humanities, cmccorpora17}
 \newcommand{\pdfcreator}{Egon W. Stemle, Eurac Research}
@@ -22,6 +21,14 @@ Media Corpora for the Humanities (cmccorpora17)%
     This publication was compiled with Lua\LaTeX{}.  The \LaTeX{} template is based
     on \href{http://www.komascript.de/}{KOMA script} and can be found online:
     \href{https://github.com/cmc-corpora/}{https://github.com/cmc-corpora/}.
+}
+
+\DeclareRobustCommand{\footershorttitle}[1]{
+    \ifthenelse{\equal{#1}{}}{%
+        \href{https://twitter.com/intent/tweet?text=reading\%20\%23cmccorpora17\%20online\%20proceedings from https://cmc-corpora2017.eurac.edu/proceedings/}{\shorttitle}
+    }{%
+        \href{https://twitter.com/intent/tweet?text=reading\%20#1\%20in\%20\%23cmccorpora17\%20proceedings from https://cmc-corpora2017.eurac.edu/proceedings/}{\shorttitle}
+    }
 }
 %%
 %%%
@@ -118,9 +125,11 @@ Media Corpora for the Humanities (cmccorpora17)%
     \ifthenelse{\equal{#5}{}}{%
         \addcontentsline{pdf}{section}{#4}%
         \ohead{#4}
+        \lofoot[\footershorttitle{#4} \hfill \pagemark]{\footershorttitle{#4} \hfill \pagemark}
     }{%
         \addcontentsline{pdf}{section}{#5}%
         \ohead{#5}
+        \lofoot[\footershorttitle{#5} \hfill \pagemark]{\footershorttitle{#5} \hfill \pagemark}
     }
 
     \addcontentsline{toc}{subsection}{#3}
@@ -145,6 +154,7 @@ Media Corpora for the Humanities (cmccorpora17)%
             \pagestyle{scrheadings}
             }, pages=2-]{#2}
     }
+    \lofoot[\footershorttitle{} \hfill \pagemark]{\footershorttitle{} \hfill \pagemark}
 }
 %%
 %% END
@@ -177,7 +187,7 @@ Media Corpora for the Humanities (cmccorpora17)%
 %\lehead{AUTHOR \hfill SHORTTITLE}% left even head <================
 %\refoot[\shorttitle \hfill \pagemark]{\shorttitle \hfill \pagemark}
 %\rohead{AUTHOR \hfill SHORTTITLE}% left even head <================
-\lofoot[\footershorttitle \hfill \pagemark]{\footershorttitle \hfill \pagemark}
+\lofoot[\footershorttitle{} \hfill \pagemark]{\footershorttitle{} \hfill \pagemark}
 
 % recommended: last
 \usepackage{hyperref}
@@ -412,7 +422,7 @@ We look forward to welcoming colleagues at the 2018 conference to be held in Ant
 
   \insertpdf[1]{inv-2/main.pdf}{Aivars Glaznieks}{Think Global, Write Local -- Patterns of Writing Dialect on SNS}{Patterns of Writing Dialect on SNS}{A.Glaznieks}{orthography, dialect writing, Facebook}
   %
-  \insertpdf[1]{inv-3/main.pdf}{A. Seza Do\u{g}ru\"oz}{Small vs.~Big Data in Language Research: Challenges and Opportunities}{Small vs.~Big Data in Language Research}{A.S.Do\u{g}ru\"oz}{social media data, machine learning, small vs.~large data sets, multilingualism}
+  \insertpdf[1]{inv-3/main.pdf}{A. Seza Do\u{g}ru\"oz}{Small vs.~Big Data in Language Research: Challenges and Opportunities}{Small vs. Big Data in Language Research}{A.S.Do\u{g}ru\"oz}{social media data, machine learning, small vs.~large data sets, multilingualism}
   %
   \insertpdf[1]{inv-1/main.pdf}{Darja Fi\v{s}er}{CLARIN Survey of CMC Resources and Tools}{}{D.Fi\v{s}er}{}
   %
