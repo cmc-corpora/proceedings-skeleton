@@ -1,4 +1,3 @@
-% FIXME
 \newcommand{\thetitle}{Proceedings of the 5th Conference on CMC and Social
 Media Corpora for the Humanities (cmccorpora17)%
 %\thanks{Thank You!}%
@@ -23,7 +22,7 @@ Media Corpora for the Humanities (cmccorpora17)%
     \href{https://github.com/cmc-corpora/}{https://github.com/cmc-corpora/}.
 }
 
-\DeclareRobustCommand{\footershorttitle}[1]{
+\DeclareRobustCommand{\footershorttitle}[1]{%
     \ifthenelse{\equal{#1}{}}{%
         \href{https://twitter.com/intent/tweet?text=reading\%20\%23cmccorpora17\%20online\%20proceedings from https://cmc-corpora2017.eurac.edu/proceedings/}{\shorttitle}
     }{%
@@ -36,7 +35,7 @@ Media Corpora for the Humanities (cmccorpora17)%
 %%%
 %%
 \documentclass[usegeometry]{scrbook}
-\KOMAoptions{
+\KOMAoptions{%
     fontsize=10pt,
     % twoside=semi,
     twoside=false,
@@ -220,7 +219,7 @@ Media Corpora for the Humanities (cmccorpora17)%
 %%% DOCUMENT
 %%%
 \begin{document}
-\newgeometry{
+\newgeometry{%
     top=1cm,
     bottom=1cm,
     left=1.9cm,
@@ -252,7 +251,8 @@ Media Corpora for the Humanities (cmccorpora17)%
 \clearpage
 
 \section*{\thetitle}
-\paragraph{Editors:} \authora, \authorb
+\noindent
+Editors: \authora, \authorb
 
 \bigskip
 \noindent
