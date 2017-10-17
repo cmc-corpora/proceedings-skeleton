@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:hal="http://hal.archives-ouvertes.fr/">
+    <text>
+        <body>
+            <listBibl>
+                <biblFull>
+                    <editionStmt>
+                        <edition>
+                            <ref type="file" target="proceedings.pdf" subtype="author" n="1"/>
+                        </edition>
+                    </editionStmt>
+                    <publicationStmt>
+                        <availability status="restricted">
+                            <licence target="http://creativecommons.org/licenses/by-sa/4.0/">Distributed under a Creative Commons Attribution-ShareAlike 4.0 International License</licence>
+                        </availability>
+                    </publicationStmt>
+                    <notesStmt>
+                        <note type="commentary"></note>
+                        <note type="audience" n="2"/> <!-- 2: international -->
+                        <note type="invited" n="0"/>
+                        <note type="popular" n="0"/>
+                        <note type="peer" n="1"/> <!-- peer-reviewd -->
+                        <note type="proceedings" n="1"/>
+                    </notesStmt>
+                    <sourceDesc>
+                        <biblStruct>
+                            <analytic>
+                                <title xml:lang="en">Proceedings of the 5th Conference on CMC and Social Media Corpora for the Humanities (cmccorpora17)</title>
+                                <author role="edt">
+                                    <persName>
+                                        <forename type="first">Egon</forename>
+                                        <forename type="middle">W.</forename>
+                                        <surname>Stemle</surname>
+                                    </persName>
+                                    <idno type="http://orcid.org/">0000-0002-7655-5526</idno>
+                                    <affiliation ref="#struct-449448"/>
+                                </author>
+                                <author role="edt">
+                                    <persName>
+                                        <forename type="first">Ciara</forename>
+                                        <forename type="middle">R.</forename>
+                                        <surname>Wigham</surname>
+                                    </persName>
+                                    <idno type="http://orcid.org/">0000-0001-9704-1906</idno>
+                                    <affiliation ref="#struct-399967"/>
+                                </author>
+                            </analytic>
+                            <monogr>
+                                <meeting>
+                                    <title>5th Conference on CMC and Social Media Corpora for the Humanities (cmccorpora17)</title>
+                                    <date type="start">2017-10-03</date>
+                                    <date type="end">2017-10-04</date>
+                                    <settlement>Bolzano</settlement>
+                                    <country key="IT"/>
+                                </meeting>
+                                <respStmt>
+                                    <resp>conferenceOrganizer</resp>
+                                    <name>Ciara R. Wigham</name>
+                                    <name>Michael Beißwenger</name>
+                                    <name>Darja Fišer</name>
+                                </respStmt>
+                                <imprint>
+                                    <publisher>cmc-corpora conference series</publisher>
+                                    <biblScope unit="serie">cmc-corpora pre-conference proceedings</biblScope>
+                                    <date type="datePub">2017-09-30</date>
+                                </imprint>
+                            </monogr>
+                            <ref type="publisher">https://cmc-corpora2017.eurac.edu</ref>
+                        </biblStruct>
+                    </sourceDesc>
+                    <profileDesc>
+                        <langUsage>
+                            <language ident="en"/>
+                        </langUsage>
+                        <textClass>
+                            <keywords scheme="author">
+                                <term xml:lang="en">conference proceedings</term>
+                                <term xml:lang="en">CMC</term>
+                                <term xml:lang="en">social media</term>
+                                <term xml:lang="en">corpora</term>
+                                <term xml:lang="en">humanities</term>
+                                <term xml:lang="en">cmccorpora17</term>
+                            </keywords>
+                            <!-- %%mandatory metadata domain-->
+                            <classCode scheme="halDomain" n="shs.langue"/>
+                            <classCode scheme="halDomain" n="info.info-cl"/>
+                            <classCode scheme="halTypology" n="DOUV"></classCode>
+                        </textClass>
+                        <abstract xml:lang="en">This volume presents the proceedings of the 5th edition of the annual conference series on CMC and Social Media Corpora for the Humanities (cmc-corpora2017). This conference series is dedicated to the collection, annotation, processing, and exploitation of corpora of computer-mediated communication (CMC) and social media for research in the humanities. The annual event brings together language-centered research on CMC and social media in linguistics, philologies, communication sciences, media and social sciences with research questions from the fields of corpus and computational linguistics, language technology, text technology, and machine learning.
+
+The 5th Conference on CMC and Social Media Corpora for the Humanities was held at Eurac Research on October, 4th and 5th, in Bolzano, Italy. This volume contains extended abstracts of the invited talks, papers, and extended abstracts of posters presented at the event. The conference attracted 26 valid submissions. Each submission was reviewed by at least two members of the scientific committee. This committee decided to accept 16 papers and 8 posters of which 14 papers and 3 posters were presented at the conference. The programme also includes three invited talks: two keynote talks by Aivars Glaznieks (Eurac Research, Italy) and A. Seza Doğruöz (Independent researcher) and an invited talk on the Common Language Resources and Technology Infrastructure (CLARIN) given by Darja Fišer, the CLARIN ERIC Director of User Involvement.</abstract>
+                    </profileDesc>
+                </biblFull>
+            </listBibl>
+        </body>
+    </text>
+</TEI>
