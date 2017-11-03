@@ -97,6 +97,15 @@
 {> {\SplitList {,} } m }
 {\ProcessList {#1} {\keywordsindexindexer } }
 \NewDocumentCommand{\keywordsindexindexer}{m}{\index[keywords]{#1}}
+
+\directlua{dofile("proceedings.lua")}
+\newcommand*{\pdfnumberofpages}[1]{%
+    \directlua{PDFNumberOfPages("\luatexluaescapestring{\unexpanded{#1}}")}}
+
+% \luatexluaescapestring{\unexpanded{}}
+% \directlua{UpdatePapers([["\unexpanded{#1}","\unexpanded{#2}"]])}
+% \directlua{UpdatePapers("\thepage")}
+
 %
 % Args:
 %   [1:use only first page]
