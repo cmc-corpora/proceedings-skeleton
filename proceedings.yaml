@@ -1,0 +1,195 @@
+-
+  id: 2
+  title: "Think Global, Write Local -- Patterns of Writing Dialect on SNS"
+  shorttitle: "Patterns of Writing Dialect on SNS"
+  authors: "Aivars Glaznieks"
+  shortauthors: "A.Glaznieks"
+  keywords: "orthography, dialect writing, Facebook"
+  types:
+    - invitedtalk
+-
+  id: 3
+  title: "Small vs.~Big Data in Language Research: Challenges and Opportunities"
+  shorttitle: "Small vs.~Big Data in Language Research"
+  authors: 'A.~Seza Do\u{g}ru\"oz'
+  shortauthors: 'A.S.Do\u{g}ru\"oz'
+  keywords: "social media data, machine learning, small vs.~large data sets, multilingualism"
+  types:
+    - invitedtalk
+-
+  id: 1
+  title: "CLARIN Survey of CMC Resources and Tools"
+  authors: 'Darja Fi\v{s}er'
+  shortauthors: 'D.Fi\v{s}er'
+  keywords: "CLARIN ERIC, research infrastructure, language resources, NLP tools, computer-mediated communication"
+  types:
+    - invitedtalk
+-
+  id: 2
+  title: "European Language Ecology and Bilingualism with English on Twitter"
+  shorttitle: "Language Ecology and Bilingualism with English"
+  authors: "Steven Coats"
+  shortauthors: "S.Coats"
+  keywords: "bilingualism, social media, Twitter, corpus linguistics, quantitative methods"
+  types:
+    - paper
+    - talk
+-
+  id: 4
+  title: "Reliable Part-of-Speech Tagging of Low-frequency Phenomena in the Social Media Domain"
+  shorttitle: "Reliable PoS Tagging of Low-frequency Phenomena"
+  authors: 'Tobias Horsmann, Michael Bei{\ss}wenger and Torsten Zesch'
+  shortauthors: 'T.Horsmann, M.Bei{\ss}wenger and T.Zesch'
+  keywords: "part-of-speech, social media, rare phenomena"
+  types:
+    - paper
+    - talk
+-
+  id: 5
+  title: "Emoticons as multifunctional and pragmatic Resources: a corpus-based Study on Twitter"
+  shorttitle: "Emoticons as multifunctional and pragmatic Resources"
+  authors: "Stefania Spina"
+  shortauthors: "S.Spina"
+  keywords: "emoticons, Twitter, mixed-effects models"
+  types:
+    - paper
+    - talk
+-
+  id: 8
+  title: >
+    "You're trolling because\ldots" -- A Corpus-based Study of Perceived Trolling and Motive Attribution in the Comment Threads of Three British Political Blogs
+  shorttitle: >
+    "You're trolling because\ldots"
+  authors: "M\\'arton Petyk\\'o"
+  shortauthors: "M.Petyk\\'o"
+  keywords: "troll(ing), motive attribution, blog"
+  types:
+    - paper
+    - talk
+-
+  id: 9
+  title: "The \\#Id\\'eo2017 Platform"
+  shorttitle: "\\#Id\\'eo2017"
+  authors: "Julien Longhi, Claudia Marinica, Nader Hassine, Abdulhafiz Alkhouli and Boris Borzic"
+  shortauthors: "J.Longhi, C.Marinica, N.Hassine, A.Alkhouli and B.Borzic"
+  keywords: "NLP for social media, NLP applications, textometry, tweets mining"
+  types:
+    - paper
+    - talk
+-
+  id: 12
+  title: "Modeling Non-Standard Language Use in Adolescents' CMC: The Impact and Interaction of Age, Gender and Education"
+  shorttitle: "Non-Standard Language Use in Adolescents' CMC"
+  authors: "Lisa Hilte, Reinhild Vandekerckhove and Walter Daelemans"
+  shortauthors: "L.Hilte, R.Vandekerckhove and W.Daelemans"
+  keywords: "non-standardness, teenage talk, language modeling"
+  types:
+    - paper
+    - talk
+-
+  id: 13
+  title: "Corpus-Based Analysis of Demonyms in Slovene Twitter"
+  authors: 'Taja Kuzman and Darja Fi\v{s}er'
+  shortauthors: 'T.Kuzman and D.Fi\v{s}er'
+  keywords: "demonyms, nationalities, Twitter, discourse analysis, Slovene"
+  types:
+    - paper
+    - talk
+-
+  id: 15
+  title: "A Comparative Study of Computer-mediated and Spoken Conversations from Pakistani and U.S.~English using Multidimensional Analysis"
+  shorttitle: "Comparative Study of CM and Spoken Conversations"
+  authors: "Muhammad Shakir and Dagmar Deuber"
+  shortauthors: "M.Shakir and D.Deuber"
+  keywords: "register variation, multidimensional analysis, World Englishes, conversations"
+  types:
+    - paper
+    - talk
+-
+  id: 18
+  title: "Developing a protocol for collecting data in Higher Education: assessing natural language metadata for a Databank of Oral Teletandem Interactions"
+  shorttitle: "Developing a protocol for collecting data in Higher Education"
+  authors: "Paola Leone"
+  shortauthors: "P.Leone"
+  keywords: "corpora, data collection, metadata, telecollaboration, language learning, protocol for data collection"
+  types:
+    - paper
+    - talk
+-
+  id: 19
+  title: "Investigating Interaction Signs across Genres, Modes and Languages: The Example of OKAY"
+  shorttitle: "OKAY"
+  authors: "Laura Herzberg and Angelika Storrer"
+  shortauthors: "L.Herzberg and A.Storrer"
+  keywords: "interaction signs, cross-lingual CMC study, Wikipedia talk pages"
+  types:
+    - paper
+    - talk
+-
+  id: 23
+  title: "The Impact of WhatsApp on Dutch Youths' School Writing"
+  authors: "Lieke Verheijen and Wilbert Spooren"
+  shortauthors: "L.Verheijen and W.Spooren"
+  keywords: "social media, WhatsApp, school writing, literacy"
+  types:
+    - paper
+    - talk
+-
+  id: 26
+  title: "Anonymisation of the Dortmund Chat Corpus 2.1"
+  authors: 'Harald L\"ungen, Michael Bei{\ss}wenger, Laura Herzberg and Cathrin Pichler'
+  shortauthors: 'H.L\"ungen, M.Bei{\ss}wenger, L.Herzberg and C.Pichler'
+  keywords: "corpora, anonymisation"
+  types:
+    - paper
+    - talk
+-
+  id: 27
+  title: "Fear and Loathing on Twitter: Attitudes towards Language"
+  authors: 'Damjan Popi\v{c} and Darja Fi\v{s}er'
+  shortauthors: 'D.Popi\v{c} and D.Fi\v{s}er'
+  keywords: "orthography, (linguistic) prestige"
+  types:
+    - paper
+    - talk
+-
+  id: 28
+  title: "Connecting Resources: Which Issues Have to be Solved to Integrate CMC Corpora from Heterogeneous Sources and for Different Languages?"
+  shorttitle: "Connecting Resources"
+  authors: >
+    Michael Bei{\ss}wenger, Ciara Wigham, Carole Etienne, Holger Grumt Su\'arez, Laura Herzberg, Darja Fi\v{s}er, Erhard Hinrichs, Tobias Horsmann, Natali Karlova-Bourbonus, Lothar Lemnitzer, Julien Longhi, Harald L\"ungen, Lydia-Mai Ho-Dac, Christophe Parisse, C\'eline Poudat, Thomas Schmidt, Egon Stemle, Angelika Storrer and Torsten Zesch
+  shortauthors: 'M.Bei{\ss}wenger, C.Wigham and colleagues'
+  keywords: "corpora, research infrastructures, annotation, anonymisation"
+  types:
+    - paper
+    - talk
+-
+  id: 14
+  title: "MoCoDa 2: Creating a Database and Web Frontend for the Repeated Collection of Mobile Communication (WhatsApp, SMS \\& Co)"
+  shorttitle: "MoCoDa 2"
+  authors: 'Michael Bei{\ss}wenger, Marcel Fladrich, Wolfgang Imo and Evelyn Ziegler'
+  shortauthors: 'M.Bei{\ss}wenger, M.Fladrich, W.Imo and E.Ziegler'
+  keywords: "corpora, collection strategies, WhatsApp, annotation"
+  types:
+    - paper
+    - poster
+-
+  id: 21
+  title: "The graphic realization of /l/-vocalization in Swiss German WhatsApp messages"
+  shorttitle: "/l/-vocalization in Swiss German"
+  authors: "Simone Ueberwasser"
+  shortauthors: "S.Ueberwasser"
+  keywords: "Swiss German dialects, /l/-vocalization, WhatsApp: dialect use in"
+  types:
+    - paper
+    - poster
+-
+  id: 25
+  title: "Public Service News on Facebook: Exploring Journalistic Usage Patterns and Reaction Data"
+  shorttitle: "Public Service News on Facebook"
+  authors: "Daniel Pfurtscheller"
+  shortauthors: "D.Pfurtscheller"
+  keywords: "Facebook, social media interaction, public service news, metadata, media linguistics"
+  types:
+    - paper
+    - poster
