@@ -29,7 +29,7 @@ all: init $(TARGETS) bundle
 init: submissions_sane
 
 $(TARGETS): %.pdf:%.tex $(PAPERS_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS) $(IMG_SRCS) $(OTH_SRCS)
-	for AUX in $(wildcard *.aux); do echo $${AUX}; [ -s $${AUX} ] || rm $${AUX}; done
+	#for AUX in $(wildcard *.aux); do echo $${AUX}; [ -s $${AUX} ] || rm $${AUX}; done
 ifeq ($(ENGINE),pdflatex)
 	latexmk -pdf -pdflatex="pdflatex $(LATEXMK_PDFLATEX_OPTS)"            -bibtex -use-make $<
 else
@@ -50,7 +50,8 @@ submissions_sane/%.pdf: submissions/%.pdf
 	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="submissions_sane/$$(basename $<)" $<
 submissions_sane: $(SUBMISSIONS_TARGETS)
 
-$(PAPERS_TARGETS): %.pdf:%.tex $(TARGETS)
+$(PAPERS_TARGETS): $(TARGETS)
+	lualatex -jobname='tmpaper' -pdf <(echo "\input{$(patsubst %.pdf,%.tex,$(patsubst paper%,meta%,$@))}\includeonly{$(subst .pdf,,$@)}\input{proceedings-main}")
 	lualatex -jobname='tmpaper' -pdf <(echo "\input{$(patsubst %.pdf,%.tex,$(patsubst paper%,meta%,$@))}\includeonly{$(subst .pdf,,$@)}\input{proceedings-main}")
 	mv tmpaper.pdf $@
 papers: $(PAPERS_TARGETS)
