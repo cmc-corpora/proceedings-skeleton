@@ -1,4 +1,3 @@
-
 function OpenFile(name, mode) 
     out=io.open(name, mode) 
     return 
@@ -47,4 +46,4 @@ function PDFNumberOfPages(filename)
     tex.print(pages) 
 end
 
-// luatexbase.add_to_callback('stop_run', EndOutput, "EndOutput")
+-- luatexbase.add_to_callback('stop_run', EndOutput, "EndOutput")
