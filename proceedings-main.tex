@@ -1,0 +1,266 @@
+\RequirePackage{snapshot}  % needed by bundledoc
+\pdfminorversion=5         % force pdf version 1.5
+
+\DeclareRobustCommand{\footershorttitle}[1]{%
+    \ifthenelse{\equal{#1}{}}{%
+        \href{https://twitter.com/intent/tweet?text=reading\%20\%23cmccorpora17\%20online\%20proceedings from https://cmc-corpora2017.eurac.edu/proceedings/}{\shorttitle}
+    }{%
+        \href{https://twitter.com/intent/tweet?text=reading\%20#1\%20in\%20\%23cmccorpora17\%20proceedings from https://cmc-corpora2017.eurac.edu/proceedings/}{\shorttitle}
+    }
+}
+%%
+%%%
+
+%%%
+%%
+\documentclass[usegeometry]{scrbook}
+\KOMAoptions{%
+    fontsize=10pt,
+    % twoside=semi,
+    twoside=false,
+    paper=a4,
+}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\usepackage{fontspec} % recommended (althouth, not universally) when using lualatex
+\defaultfontfeatures{Ligatures=TeX}
+\usepackage{microtype}
+
+%%%
+%% for add CC license with pic
+%%
+\usepackage{hyperxmp}
+\usepackage[
+    type={CC},
+    modifier={by},
+    version={4.0},
+]{doclicense}
+%%
+%%%
+
+%%%
+%% Margins, columns, etc values (from lrec2016.sty) for use with geometry
+%%
+%\setlength\topmargin{-0.1cm}
+%\setlength\oddsidemargin{-0.7cm}
+%\setlength\evensidemargin{-0.7cm}
+%\setlength\textheight{25.4cm}
+%\setlength\textwidth{17.2cm}
+\usepackage{geometry}
+
+%%%
+%% for inclusion of pdf documents
+%%
+\usepackage{pdfpages}
+
+%%%
+%% for author and keyword index
+%%
+\usepackage{imakeidx}
+\indexsetup{}
+\makeindex[name=keywords,title=Keyword Index,columns=2]
+\makeindex[name=authors,title=Author Index,columns=2]
+% for splitting author and keyword lists in the index
+\usepackage{xparse}
+%%
+%%%
+
+%%%
+%% for Committees page
+%%
+\usepackage{longtable}
+
+%%%
+%% for including graphics
+%%
+\usepackage{graphicx}
+\usepackage{epstopdf} % converting to PDF
+
+%%%
+%% FRONT MATTER
+%%
+% Regular title as in the article class.
+%
+\title{\thetitle}
+
+
+%%%
+%% BEGIN: Author and Keyword Index Splitter
+%%
+\NewDocumentCommand \authorsindexsplitter {> {\SplitList {,} } m }
+{\ProcessList {#1} {\authorsindexsplitterand } }
+\NewDocumentCommand \authorsindexsplitterand
+{> {\SplitList {and } } m }
+{\ProcessList {#1} {\authorsindexindexer } }
+\NewDocumentCommand{\authorsindexindexer}{m}{\index[authors]{#1}}
+\NewDocumentCommand \keywordsindexsplitter
+{> {\SplitList {,} } m }
+{\ProcessList {#1} {\keywordsindexindexer } }
+\NewDocumentCommand{\keywordsindexindexer}{m}{\index[keywords]{#1}}
+%
+% Args:
+%   [1:use only first page]
+%    PDF-FILE_NAME
+%    AUTHORS
+%    TITLE
+%    SHORTTITLE
+%    SHORTAUTHORS
+%    KEYWORDS
+\DeclareRobustCommand{\insertpdf}[6]{%
+    \phantomsection
+
+    \addcontentsline{toc}{section}{#3}
+    \ifthenelse{\equal{#4}{}}{%
+        \addcontentsline{pdf}{section}{#3}%
+        \ohead{#3}
+        \lofoot[\footershorttitle{#3} \hfill \pagemark]{\footershorttitle{#3} \hfill \pagemark}
+    }{%
+        \addcontentsline{pdf}{section}{#4}%
+        \ohead{#4}
+        \lofoot[\footershorttitle{#4} \hfill \pagemark]{\footershorttitle{#4} \hfill \pagemark}
+    }
+
+    \addcontentsline{toc}{subsection}{#2}
+    \ifthenelse{\equal{#5}{}}{%
+        \ihead{#2}
+    }{%
+        \ihead{#5}
+    }
+
+    \authorsindexsplitter{#2}
+    \keywordsindexsplitter{#6}
+
+	\includepdf[pagecommand={%
+		\thispagestyle{scrplain}
+		}, pages=1]{#1}
+
+    \ifnum\pdfnumberofpages{#1}>1
+        \includepdf[pagecommand={%
+            \pagestyle{scrheadings}
+            }, pages=2-]{#1}
+    \fi
+    \lofoot[\footershorttitle{} \hfill \pagemark]{\footershorttitle{} \hfill \pagemark}
+}
+%%
+%% END
+%%%
+
+%%%
+%% toc and minitocs
+%%
+\usepackage{titletoc}
+\titlecontents{section}[0pt]{\addvspace{5pt}\filright}{}{}{\dotfill\contentspage}[]
+\titlecontents{subsection}[10pt]{\addvspace{1pt}\itshape\filright}{}{}{}[]
+
+\usepackage[tocfullflat]{tocstyle}
+\usetocstyle{KOMAlike}
+\setkomafont{disposition}{\normalfont}
+% no page number for authors
+\settocfeature[toc][2]{pagenumberbox}{\csname @gobble\endcsname}
+% no dots for authors
+\settocfeature[toc][2]{dothook}{\csname @gobble\endcsname}
+% indent authors but without hanging indent
+\settocfeature[toc][2]{entryhook}{\itshape\hskip \leftskip \setlength{\leftskip}{10pt}}
+% more vspace between author and paper entries
+\settocfeature[toc][1]{entryvskip}{2pt}
+% no hanging indent
+\settocfeature[toc][1]{entryhook}{\bfseries\hskip\leftskip\setlength{\leftskip}{0pt}}
+
+\usepackage[automark,autooneside=false,headsepline,footsepline,plainfootsepline]{scrlayer-scrpage}
+
+\clearscrheadfoot %% <-----
+%\lehead{AUTHOR \hfill SHORTTITLE}% left even head <================
+%\refoot[\shorttitle \hfill \pagemark]{\shorttitle \hfill \pagemark}
+%\rohead{AUTHOR \hfill SHORTTITLE}% left even head <================
+\lofoot[\footershorttitle{} \hfill \pagemark]{\footershorttitle{} \hfill \pagemark}
+
+% recommended: last
+\usepackage{hyperref}
+\hypersetup{%
+    pdftitle={\pdftitle},
+    pdfauthor={\pdfauthors},
+    pdfsubject={\pdfsubject},
+    pdfkeywords={\pdfkeywords},
+    pdfcreator={\pdfcreator},
+    colorlinks=true,
+    allcolors=blue,
+    linktocpage=true, % link page number in toc rather than text
+    bookmarkstype=pdf,
+    bookmarksopen=true,
+    bookmarksopenlevel=4
+}
+% recommended: *after* hyperref
+\usepackage{minitoc}
+\renewcommand{\mtcfont}{\small\itshape}
+\renewcommand{\mtcSfont}{\small\bfseries}
+\usepackage{silence}  % silence minitoc warnings because of hyperref foo
+\WarningFilter{minitoc(hints)}{W0023}
+\WarningFilter{minitoc(hints)}{W0024}
+\WarningFilter{minitoc(hints)}{W0028}
+\WarningFilter{minitoc(hints)}{W0030}
+%%
+%%%
+
+%%%
+%%% DOCUMENT
+%%%
+\begin{document}
+\newgeometry{%
+    top=1cm,
+    bottom=1cm,
+    left=1.9cm,
+    right=1.9cm,
+    includeheadfoot}
+\dominitoc
+\pagestyle{scrheadings}
+
+%%%%%%
+%%% Front Matter
+%%%%%%
+\frontmatter
+
+%%%
+%%% TITLE Page, Second Page, Preface, TOC, Committees
+%%%
+\include{bit-00-frontmatter}
+
+
+%%%%%%
+%% MAIN MATTER
+%%%%%
+\mainmatter
+\include{bit-01-invtalks-toc}
+
+  \include{paper-inv_2}
+  \include{paper-inv_3}
+  \include{paper-inv_1}
+
+\include{bit-02-papers-toc}
+  \include{paper_23}
+  \include{paper_12}
+  \include{paper_19}
+  \include{paper_26}
+  \include{paper_5}
+  \include{paper_13}
+  \include{paper_2}
+  \include{paper_4}
+  \include{paper_18}
+  \include{paper_9}
+  \include{paper_28}
+  \include{paper_8}
+  \include{paper_27}
+  \include{paper_15}
+
+\include{bit-03-posters-toc}
+  \include{paper_14}
+  \include{paper_25}
+  \include{paper_21}
+%------------------------------------------------------------------------------
+
+%%%
+%% BACK MATTER
+%%%
+\backmatter
+\include{bit-04-backmatter}
+%------------------------------------------------------------------------------
+\end{document}

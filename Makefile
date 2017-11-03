@@ -1,4 +1,6 @@
 TARGETS = proceedings.pdf
+PAPERS_SRCS = $(wildcard paper*.tex)
+PAPERS_TARGETS = $(patsubst %.tex,%.pdf,$(PAPERS_SRCS))
 BNDL_TARGETS = $(patsubst %.pdf,%.tar.gz,$(TARGETS))
 OUT_TARGETS = $(patsubst %.pdf,%.out,$(TARGETS))
 PDF_TARGETS = $(TARGETS)
@@ -11,18 +13,18 @@ OTH_SRCS := $(wildcard *.tex) $(wildcard *.cls) $(wildcard *.sty)
 LATEXMK_PDFLATEX_OPTS ?= -file-line-error -interaction=nonstopmode
 LATEXMK_CE_OPTS = '$$cleanup_includes_cusdep_generated=1;$$clean_ext="dep nav run.xml snm tdo vrb"'
 
-PAPER_SOURCES := $(wildcard papers.org/paper_*.pdf)
-PAPER_TARGETS := $(patsubst papers.org/%,papers/%,$(PAPER_SOURCES))
+SUBMISSIONS_SOURCES := $(wildcard submissions/paper_*.pdf)
+SUBMISSIONS_TARGETS := $(patsubst submissions/%,submissions_sane/%,$(SUBMISSIONS_SOURCES))
 
 #.DELETE_ON_ERROR:
 
-.PHONY: all init extras compressed bundle install clean realclean papers
+.PHONY: all init extras compressed bundle install clean realclean submissions_sane papers
 
 .DEFAULT_GOAL := $(TARGETS)
 
 all: $(TARGETS) extras bundle
 
-init: papers
+init: submissions_sane
 
 $(TARGETS): %.pdf:%.tex init $(TEX_XTRA_SRCS) $(BIB_SRCS) $(IMG_SRCS) $(OTH_SRCS)
 	for AUX in $(wildcard *.aux); do echo $${AUX}; [ -s $${AUX} ] || rm $${AUX}; done
@@ -42,9 +44,13 @@ $(BNDL_TARGETS): $(OUT_TARGETS) $(TARGETS) Makefile
 
 bundle: $(BNDL_TARGETS)
 
-papers/%.pdf: papers.org/%.pdf
-	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="papers/$$(basename $<)" $<
-papers: $(PAPER_TARGETS)
+submissions_sane/%.pdf: submissions/%.pdf
+	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="submissions_sane/$$(basename $<)" $<
+submissions_sane: $(SUBMISSIONS_TARGETS)
+
+$(PAPERS_TARGETS): $(TARGETS) $(PAPERS_SRCS)
+	latexmk -pdf -pdflatex="lualatex $(LATEXMK_PDFLATEX_OPTS)" -dvi- -ps- -bibtex $<
+papers: $(PAPERS_TARGETS)
 
 clean:
 	latexmk -c -bibtex -e $(LATEXMK_CE_OPTS)
