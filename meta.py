@@ -14,6 +14,7 @@ for datum in data:
     fid_incl = None
     pdfcreator = 'Egon W.~Stemle, Eurac Research'
     pdfsubject = "Proceedings of the 5th Conference on CMC and Social Media Corpora for the Humanities (cmccorpora17)"
+    footershorttitle = '\#cmccorpora17'
 
     authors = datum['authors'].strip()
     title = datum['title'].strip()
@@ -51,6 +52,7 @@ for datum in data:
         nc = """\\newcommand"""
 
         fh.write("%s{\\thetitle}{%s}\n" %(nc, title))
+        fh.write("%s{\\shorttitle}{%s}\n" %(nc, footershorttitle))
 
         fh.write("%s{\\%s}{%s}\n" %(nc, "pdftitle", "\\thetitle"))
         fh.write("%s{\\%s}{%s}\n" %(nc, "pdfauthors", authors))
