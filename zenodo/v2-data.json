@@ -1,0 +1,62 @@
+{
+    "metadata": {
+        // Without this doi entry the server will respond with
+        // Internal Server Error upon update.
+        "doi": "_DOI_", 
+        // preserve_doi is *not* enough.
+        "prereserve_doi": {
+            "doi": "_DOI_", 
+            "recid": _RECID_
+        },
+        "related_identifiers": [
+            {"relation": "isIdenticalTo", 
+             "identifier": "https://hal.archives-ouvertes.fr/hal-01614310v2"
+            }
+        ],
+        "communities": [{"identifier": "cmccorpora17"}],
+        "title": "Proceedings of the 5th Conference on CMC and Social Media Corpora for the Humanities (cmccorpora17)",
+        "description": "<p>This volume presents the proceedings of the 5th edition of the annual conference series on CMC and Social Media Corpora for the Humanities (cmc-corpora2017). This conference series is dedicated to the collection, annotation, processing, and exploitation of corpora of computer-mediated communication (CMC) and social media for research in the humanities. The annual event brings together language-centered research on CMC and social media in linguistics, philologies, communication sciences, media and social sciences with research questions from the fields of corpus and computational linguistics, language technology, text technology, and machine learning.</p> 
+<p>The 5th Conference on CMC and Social Media Corpora for the Humanities was held at Eurac Research on October, 4th and 5th, in Bolzano, Italy. This volume contains extended abstracts of the invited talks, papers, and extended abstracts of posters presented at the event. The conference attracted 26 valid submissions. Each submission was reviewed by at least two members of the scientific committee. This committee decided to accept 16 papers and 8 posters of which 14 papers and 3 posters were presented at the conference. The programme also includes three invited talks: two keynote talks by Aivars Glaznieks (Eurac Research, Italy) and A. Seza Doğruöz (Independent researcher) and an invited talk on the Common Language Resources and Technology Infrastructure (CLARIN) given by Darja Fišer, the CLARIN ERIC Director of User Involvement.</p>",
+        "creators": [
+            {"name": "Stemle, Egon W.", 
+             "affiliation": "Eurac Research, Italy",
+             "orcid": "0000-0002-7655-5526"
+            }, 
+            {"name": "Wigham, Ciara R.", 
+             "affiliation": "Université Clermont Auvergne, France",
+             "orcid": "0000-0001-9704-1906"
+            }],
+        // "contributors": [
+        //     {"name": "Stemle, Egon W.", 
+        //      "type": "Editor",
+        //      "affiliation": "Eurac Research, Italy",
+        //      "orcid": "0000-0002-7655-5526"
+        //     }, 
+        //     {"name": "Wigham, Ciara R.", 
+        //      "type": "Editor",
+        //      "affiliation": "Université Clermont Auvergne, France",
+        //      "orcid": "0000-0001-9704-1906"
+        //     }],
+        "upload_type": "publication",
+        "publication_type": "conferencepaper",
+        "access_right": "open", 
+        "keywords": [
+            "conference proceedings",
+            "CMC",
+            "computer-mediated communication",
+            "social media",
+            "humanities",
+            "cmccorpora17"], 
+        "language": "eng",
+        "license": {
+            "id": "CC-BY-4.0"
+        }, 
+        "imprint_publisher": "cmc-corpora conference series",
+        "conference_title": "5th Conference on CMC and Social Media Corpora for the Humanities", 
+        "conference_acronym": "cmccorpora17", 
+        "conference_dates": "3-4 October 2017", 
+        "conference_place": "Bolzano, Italy", 
+        "conference_url": "https://cmc-corpora2017.eurac.edu",
+        "publication_date": "2017-11-02" 
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "metadata": {
+        "related_identifiers": [
+            {"relation": "isPartOf", 
+             "identifier": "10.5281/zenodo.1040713"
+            }
+        ],
+        "communities": [{"identifier": "cmccorpora17"}],
+        "title": "",
+        "partof_title": "Proceedings of the 5th Conference on CMC and Social Media Corpora for the Humanities (cmccorpora17)",
+        "description": "",
+        "creators": [],
+        "upload_type": "publication",
+        "publication_type": "conferencepaper",
+        "access_right": "open", 
+        "keywords": [], 
+        "language": "eng",
+        "license": {
+            "id": "CC-BY-4.0"
+        }, 
+        "imprint_publisher": "cmc-corpora conference series",
+        "conference_title": "5th Conference on CMC and Social Media Corpora for the Humanities", 
+        "conference_acronym": "cmccorpora17", 
+        "conference_dates": "3-4 October 2017", 
+        "conference_place": "Bolzano, Italy", 
+        "conference_url": "https://cmc-corpora2017.eurac.edu",
+        "publication_date": "2017-09-30" 
+    }
+}
